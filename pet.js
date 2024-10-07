@@ -155,7 +155,7 @@ petContainer.append(card);
       const buttonContainer = document.createElement("div");
       buttonContainer.innerHTML = `
       
-      <button onclick="loadCategoryPets('${item.category}')" class="btn">
+      <button id="btn-${item.category}" onclick="loadCategoryPets('${item.category}')" class="btn category-btn">
       <img src="${item.category_icon}" />
       ${item.category}
       
@@ -173,10 +173,23 @@ petContainer.append(card);
   // fetch
   fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
       .then((res) => res.json())
-      .then((d) => displaypets(d.data))
+      .then((d) => {
+        // class remove
+        removeActiveClass();
+        const activeBtn = document.getElementById(`btn-${id}`)
+        activeBtn.classList.add("active");
+        displaypets(d.data)
+      })
       .catch((error) => console.log(error));
  }
-  
+
+const removeActiveClass=()=>{
+    const buttons = document.getElementsByClassName("category-btn");
+    for(let btn of buttons){
+      btn.classList.remove("active");
+    }
+}
+
   loadCategories();
   loadPets();
   
