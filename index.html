@@ -51,30 +51,38 @@
                 <h3 class="text-lg text-gray-600 w-3/12 mx-auto pl-10">Bringing Families Together 
                     </h3>
                     <h2 class="text-[68px] text-black font-bold w-3/5 mx-auto text-center mb-4">Your Path to Adoption Starts Here</h2>
-                    <h3 class="w-3/5 mx-auto text-center text-black mb-7">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</h3>
+                    <h3 class="w-3/5 mx-auto text-center text-black mb-7">
+                      Adopting a pet is more than just bringing an animal home—it's welcoming a loyal companion into your life. Whether you're looking for a playful pup, a cuddly cat, or any other furry friend, adopting gives them a second chance at a happy, loving life.</h3>
                    <div class="w-[150px] mx-auto mb-10 ">
-                    <button class="px-8 py-4 rounded-xl bg-clr text-white font-bold  mx-auto">View More</button>
+                    <button onclick="location.href='#adoption' " class="px-8 py-4 rounded-xl bg-clr text-white font-bold  mx-auto">View More</button>
                    </div>
                   <div class="w-3/5 mx-auto mb-24">
                     <img src="images/pet.webp" alt="" srcset="">
                   </div>
 
-            <div class="w-3/6 mx-auto text-center">
+            <div id="adoption" class="w-3/6 mx-auto text-center">
               <h2 class="mb-6 text-3xl text-black font-bold">Adopt Your Best Friend</h2>
-              <p class="text-sm text-gray-500 mb-12">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+              <p class="text-sm text-gray-500 mb-12">"Find Your Perfect Companion: Adopt Your Best Friend Today!"
+                "Open Your Heart and Home—Discover a Lifelong Friendship with Pet Adoption!"</p>
             </div>
             </div>
         </section>
-        <section id="categories" class="w-10/12 mx-auto flex gap-6  justify-center mb-8"></section>
+        <section id="categories" class="grid lg:grid-cols-4 md:grid-cols-4 w-10/12 mx-auto  gap-6  justify-center mb-8"></section>
         
       <div class="flex  justify-between mb-12 px-20">
         <h2 class="text-2xl font-bold text-black">Best Deal For You </h2>
         <button class="w-[150px] py-3 rounded-xl bg-clr text-white font-bold  " >Sort By Price</button>
       </div>
-      <section
+      <div class="flex gap-3 px-4 mb-10">
+        <section
         id="pets"
-        class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-10"
+        class="w-3/4 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
       ></section>
+      
+      <section id="likedPet" class="grid grid-cols-1 grid-flow-row auto-rows-max md:grid-cols-2 lg:grid-cols-2 gap-3 border rounded-xl">
+        
+      </section>
+      </div>
 
       <!-- Modal -->
       <!-- Open the modal using ID.showModal() method -->
@@ -92,6 +100,20 @@
     </div>
   </div>
 </dialog>
+
+<!-- Congrats Modal -->
+
+<!-- Open the modal using ID.showModal() method -->
+<button id="showCongratsData" class="btn hidden" onclick="mymodal.showModal()">open modal</button>
+<dialog id="mymodal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="congratsContent">
+
+    </div>
+   
+  </div>
+</dialog>
+
 
     </main>
 

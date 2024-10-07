@@ -2,6 +2,9 @@
     background-color: red;
     color: #fff;
   }
+.bg-gray{
+  background-color: gray;
+}
 
   .btn {
     width: 200px;
