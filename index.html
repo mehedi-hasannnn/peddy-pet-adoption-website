@@ -48,8 +48,11 @@
     <main>
         <section>
             <div>
-                <h3 class="text-lg text-gray-600 w-3/12 mx-auto pl-10">Bringing Families Together 
-                    </h3>
+                <div class="text-center gap-3">
+                  <p class="text-lg text-gray-600   pl-10">Bringing Families Together 
+                  </p>
+                  
+                </div>
                     <h2 class="text-[68px] text-black font-bold w-3/5 mx-auto text-center mb-4">Your Path to Adoption Starts Here</h2>
                     <h3 class="w-3/5 mx-auto text-center text-black mb-7">
                       Adopting a pet is more than just bringing an animal home—it's welcoming a loyal companion into your life. Whether you're looking for a playful pup, a cuddly cat, or any other furry friend, adopting gives them a second chance at a happy, loving life.</h3>
@@ -76,16 +79,27 @@
       <div class="flex gap-3 px-4 mb-10">
         <section
         id="pets"
-        class="w-3/4 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        class=" mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 grid-container"
       ></section>
       
-      <section id="likedPet" class="grid grid-cols-1 grid-flow-row auto-rows-max md:grid-cols-2 lg:grid-cols-2 gap-3 border rounded-xl">
+      <section id="likedPet" class="grid grid-cols-1 grid-flow-row auto-rows-max md:grid-cols-1 lg:grid-cols-2 gap-1 border rounded-xl">
         
       </section>
       </div>
-
+      <!-- Loading spinner -->
+      <div id="loadingSpinner" style="display: none;">
+      <div class="flex justify-center">
+        <span class="loading loading-bars loading-xs"></span>
+        <span class="loading loading-bars loading-sm"></span>
+        <span class="loading loading-bars loading-md"></span>
+        <span class="loading loading-bars loading-lg"></span>
+          
+      </div>
+      <p class="text-center font-semibold text-xl">Loading...</p>
+    </div>
+    
       <!-- Modal -->
-      <!-- Open the modal using ID.showModal() method -->
+      
 <button id="showModalData" class="btn hidden" onclick="customModal.showModal()">open modal</button>
 <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
@@ -94,7 +108,7 @@
     </div>
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
+        
         <button class="btn text-clr font-bold w-[450px]">Cancel</button>
       </form>
     </div>
@@ -103,7 +117,7 @@
 
 <!-- Congrats Modal -->
 
-<!-- Open the modal using ID.showModal() method -->
+
 <button id="showCongratsData" class="btn hidden" onclick="mymodal.showModal()">open modal</button>
 <dialog id="mymodal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">

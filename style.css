@@ -1,9 +1,7 @@
-
 .bg-gray{
   background-color: gray;
 }
-
-  .btn {
+.btn {
     width: 200px;
     height: 70px;
     border: 1px solid rgba(14, 122, 129, 0.15);
@@ -11,13 +9,26 @@
     background: white;
     font-size: 24px;}
     
-    .active{
+.active{
       border: 2px solid seagreen;
       border-radius: 20px;
       background-color: seagreen;
       
     }
-    .category-icon {
+.category-icon {
         width: 35px;   
         height: 35px;  
       }
+
+.grid-container {
+        
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 5px; 
+        
+    }
+.card {
+      
+      border-radius: 10px; 
+      overflow: hidden; 
+  }
