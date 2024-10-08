@@ -6,14 +6,6 @@ const loadCategories = () => {
     .catch((error) => console.log(error));
 };
 
-const loadPets = () => {
-  // Fetch the data
-  fetch("https://openapi.programming-hero.com/api/peddy/pets")
-    .then((res) => res.json())
-    .then((data) => displaypets(data.pets))
-    .catch((error) => console.log(error));
-};
-
 const loadDetails = async (petId) => {
   console.log(petId);
   const url = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
@@ -63,31 +55,37 @@ const showPic = (pet) => {
   likedImageContainer.appendChild(div);
 };
 
+const getDisplayValue = (value) => {
+  return value === null || value === undefined ? "Not available" : value;
+};
+
+
 const displayDetails = (petData) => {
   console.log(petData);
   const detailContainer = document.getElementById("modal-content");
 
   detailContainer.innerHTML = `
-    <img class="rounded-lg h-full w-full object-cover" src=${petData.image} />
+    <img class="rounded-lg h-full w-full object-cover" src=${getDisplayValue(petData.image)} />
     <div class="mb-3 p-3">
-        <h3 class="font-bold text-2xl mb-2">${petData.pet_name}</h3>
-        <p class="text-gray-500 flex gap-1"> <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/health-data.png" alt="health-data"/> Breed: ${petData.breed} </p>
-        <p class="text-gray-500 flex gap-1"> <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/calendar--v1.png" alt="calendar--v1"/> Birth: ${petData.date_of_birth} </p>
-        <p class="text-gray-500 flex gap-1"> <img width="24" height="15" src="https://img.icons8.com/fluency-systems-regular/50/mercury.png" alt="mercury"/> Gender: ${petData.gender} </p>
-        <p class="text-gray-500 flex gap-1"> <img width="24" height="15" src="https://img.icons8.com/fluency-systems-regular/50/mercury.png" alt="mercury"/> Vaccinated Status: ${petData.vaccinated_status} </p>
-        <p class="text-gray-500 flex gap-1"> <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/us-dollar--v1.png" alt="us-dollar--v1"/> Price: ${petData.price}$ </p>
+        <h3 class="font-bold text-2xl mb-2">${getDisplayValue(petData.pet_name)}</h3>
+        <p class="text-gray-500 flex gap-1"> <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/health-data.png" alt="health-data"/> Breed: ${getDisplayValue(petData.breed)} </p>
+        <p class="text-gray-500 flex gap-1"> <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/calendar--v1.png" alt="calendar--v1"/> Birth: ${getDisplayValue(petData.date_of_birth)} </p>
+        <p class="text-gray-500 flex gap-1"> <img width="24" height="15" src="https://img.icons8.com/fluency-systems-regular/50/mercury.png" alt="mercury"/> Gender: ${getDisplayValue(petData.gender)} </p>
+        <p class="text-gray-500 flex gap-1"> <img width="24" height="15" src="https://img.icons8.com/fluency-systems-regular/50/mercury.png" alt="mercury"/> Vaccinated Status: ${getDisplayValue(petData.vaccinated_status)} </p>
+        <p class="text-gray-500 flex gap-1"> <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/us-dollar--v1.png" alt="us-dollar--v1"/> Price: ${getDisplayValue(petData.price)}$ </p>
         <br>
         <h3 class="font-bold text-xl">Details Information</h3>
-        <p> ${petData.pet_details} </p>
+        <p> ${getDisplayValue(petData.pet_details)} </p>
     </div>
   `;
 
   document.getElementById("showModalData").click();
 };
 
+
 const displaypets = (pets) => {
   const petContainer = document.getElementById("pets");
-  petContainer.innerHTML = ""; // Clear previous pet cards
+  petContainer.innerHTML = ""; // Clearing previous pet cards
 
   if (pets.length === 0) {
     petContainer.innerHTML = `
@@ -108,25 +106,25 @@ const displaypets = (pets) => {
     card.innerHTML = `
       <div class="p-3 border rounded-lg">
         <figure>
-          <img class="rounded-lg h-full w-full object-cover" src=${pet.image} />
+          <img class="rounded-lg h-full w-full object-cover" src=${getDisplayValue(pet.image)} />
         </figure>
         <div class="mb-3 p-3">
-          <h3 class="font-bold text-2xl mb-2">${pet.pet_name}</h3>
+          <h3 class="font-bold text-2xl mb-2">${getDisplayValue(pet.pet_name)}</h3>
           <p class="text-gray-500 flex gap-1">
             <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/health-data.png" alt="health-data" /> 
-            Breed: ${pet.breed}
+            Breed: ${getDisplayValue(pet.breed)}
           </p>
           <p class="text-gray-500 flex gap-1">
             <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/calendar--v1.png" alt="calendar--v1" /> 
-            Birth: ${pet.date_of_birth}
+            Birth: ${getDisplayValue(pet.date_of_birth)}
           </p>
           <p class="text-gray-500 flex gap-1">
             <img width="24" height="15" src="https://img.icons8.com/fluency-systems-regular/50/mercury.png" alt="mercury" /> 
-            Gender: ${pet.gender}
+            Gender: ${getDisplayValue(pet.gender)}
           </p>
           <p class="text-gray-500 flex gap-1">
             <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/us-dollar--v1.png" alt="us-dollar--v1" /> 
-            Price: ${pet.price}$
+            Price: ${getDisplayValue(pet.price)}$
           </p>
         </div>
         <hr />
@@ -164,37 +162,31 @@ const loadCategoryPets = async (id) => {
   const loadingSpinner = document.getElementById("loadingSpinner");
   const petContainer = document.getElementById("pets");
 
-  // Hide pet container and show spinner
   petContainer.style.display = "none";
   loadingSpinner.style.display = "block";
 
-  const startTime = Date.now(); // Start time for spinner visibility
+  const startTime = Date.now(); 
 
   try {
-    // Fetch data based on category ID
     const response = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`);
     const d = await response.json();
 
-    // Ensure the spinner is shown for at least 2 seconds
     const delay = Math.max(2000 - (Date.now() - startTime), 0);
 
     setTimeout(() => {
-      loadingSpinner.style.display = "none"; // Hide spinner after delay
-      petContainer.style.display = "grid"; // Show pet container in grid layout
-
-      // Remove active class from other buttons and add it to the clicked button
+      loadingSpinner.style.display = "none"; 
+      petContainer.style.display = "grid"; 
       removeActiveClass();
       const activeBtn = document.getElementById(`btn-${id}`);
       activeBtn.classList.add("active");
 
-      // Display pets for the selected category
       displaypets(d.data);
     }, delay);
 
   } catch (error) {
     console.error("Error fetching category data:", error);
-    loadingSpinner.style.display = "none"; // Hide spinner in case of an error
-    petContainer.style.display = "grid"; // Show pet container in grid layout
+    loadingSpinner.style.display = "none";
+    petContainer.style.display = "grid";
   }
 };
 
@@ -206,6 +198,48 @@ const removeActiveClass = () => {
   }
 };
 
-// Initialize categories and pets
+
+let petsData = []; // storing fetched pet
+
+const loadPets = () => {
+  fetch("https://openapi.programming-hero.com/api/peddy/pets")
+    .then((res) => res.json())
+    .then((data) => {
+      petsData = data.pets; 
+      displaypets(petsData); 
+    })
+    .catch((error) => console.log(error));
+};
+
+// Sorting function
+const sortByPriceDescending = () => {
+  petsData.sort((a, b) => b.price - a.price); // descending order sorting
+  displaypets(petsData); 
+};
+
+// Add event listener to the sorting button
+document.getElementById("sortByPriceBtn").addEventListener("click", sortByPriceDescending);
+
+// Function to display pets
+const displaypets2 = (pets) => {
+  const petsContainer = document.getElementById("pets");
+  petsContainer.innerHTML = ''; // Clear out previous pets
+  pets.forEach((pet) => {
+    const petElement = document.createElement('div');
+    petElement.classList.add('pet-card', 'border', 'p-4', 'rounded-lg');
+    petElement.innerHTML = `
+      <img src="${pet.image}" alt="${pet.name}" class="w-full h-48 object-cover rounded-lg">
+      <h2 class="text-xl font-bold mt-4">${pet.name}</h2>
+      <p class="text-lg">Price: $${pet.price}</p>
+      <button onclick="loadDetails('${pet.id}')" class="mt-3 px-4 py-2 bg-clr text-white rounded">View Details</button>
+    `;
+    petsContainer.appendChild(petElement);
+  });
+};
+
+
+
+
+// load categories and pets function
 loadCategories();
 loadPets();

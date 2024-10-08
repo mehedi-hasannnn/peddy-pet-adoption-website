@@ -25,7 +25,7 @@
 <body class="p-0 m-0">
     <header>
         <nav >
-            <div class="navbar bg-base-100 pt-10 px-20 py-12">
+            <div class=" px-8 navbar bg-base-100 pt-10 lg:px-20 py-12 ">
                 <div class="navbar-start">
                   <img src="images/logo.webp" alt="" srcset="">
                   <h2 class="text-3xl font-bold ml-3">Peddy</h2>
@@ -40,7 +40,9 @@
                   </ul>
                 </div>
                 <div class="navbar-end">
-                    <i class="fa-regular fa-user border-solid border-2 border-gray-200 p-4  rounded-full "></i>
+                    <i class="fa-regular fa-user border-solid border-2 border-gray-200 p-4  rounded-full ">
+                      </i>
+                      <i class="fa-solid fa-bars text-3xl ml-3 lg:hidden"></i>
                 </div>
               </div>
         </nav>
@@ -48,14 +50,17 @@
     <main>
         <section>
             <div>
-                <div class="text-center gap-3">
-                  <p class="text-lg text-gray-600   pl-10">Bringing Families Together 
-                  </p>
+               
+              <p class="text-lg text-gray-600 mx-auto w-[260px] flex items-center justify-center">
+                Bringing Families Together 
+                <img width="24" height="24" src="https://img.icons8.com/emoji/48/heart-on-fire-emoji.png" alt="heart icon" class="ml-2"/>
+            </p>
+            
                   
-                </div>
+               
                     <h2 class="text-[68px] text-black font-bold w-3/5 mx-auto text-center mb-4">Your Path to Adoption Starts Here</h2>
                     <h3 class="w-3/5 mx-auto text-center text-black mb-7">
-                      Adopting a pet is more than just bringing an animal home—it's welcoming a loyal companion into your life. Whether you're looking for a playful pup, a cuddly cat, or any other furry friend, adopting gives them a second chance at a happy, loving life.</h3>
+                      When you adopt a pet, you're not just bringing home a new animal , you're gaining a loyal friend for life. Whether it’s an energetic dog, a gentle cat, or another furry companion, adoption gives them the opportunity to thrive in a loving, forever home.</h3>
                    <div class="w-[150px] mx-auto mb-10 ">
                     <button onclick="location.href='#adoption' " class="px-8 py-4 rounded-xl bg-clr text-white font-bold  mx-auto">View More</button>
                    </div>
@@ -74,7 +79,7 @@
         
       <div class="flex  justify-between mb-12 px-20">
         <h2 class="text-2xl font-bold text-black">Best Deal For You </h2>
-        <button class="w-[150px] py-3 rounded-xl bg-clr text-white font-bold  " >Sort By Price</button>
+        <button id="sortByPriceBtn" class="w-[150px] py-3 rounded-xl bg-clr text-white font-bold  " >Sort By Price</button>
       </div>
       <div class="flex gap-3 px-4 mb-10">
         <section
