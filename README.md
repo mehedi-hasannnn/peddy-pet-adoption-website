@@ -20,6 +20,6 @@ Peddy is a web-based pet adoption platform that allows users to explore various 
 
 ## Live Demo
 
-Check out the live version of Peddy: ...
+Check out the live version of Peddy: https://musical-sawine-ea8092.netlify.app
 
 
